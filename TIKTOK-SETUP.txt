@@ -1,0 +1,70 @@
+BORDER BEATS → TIKTOK: ONE-TIME SETUP
+======================================
+
+What you get: log in with TikTok once, and every video you render (Export MP4 or Render all) can
+go straight to your TikTok account with its caption. TikTok requires a short confirmation screen
+for each post (you pick who can see it and press Post) - that screen opens by itself when the
+videos finish.
+
+TikTok only lets registered apps post, so you register your own (free) app first. Takes ~20 min.
+
+
+1. DEVELOPER ACCOUNT
+   - Go to https://developers.tiktok.com and log in with your TikTok account.
+   - Accept the developer terms.
+
+2. CREATE THE APP  (Manage apps -> Connect an app)
+   - App name: Border Beats   (the name must not contain "TikTok")
+   - Category: Entertainment
+   - Description: "Renders physics/music videos on my PC and posts them to my TikTok account."
+   - App icon: border-beats-app-icon.png (in this folder, 1024 x 1024)
+   - Website, Terms of Service and Privacy Policy URLs (GitHub Pages, from the docs folder):
+       https://kkinnit-o8.github.io/BoarderBeats/
+       https://kkinnit-o8.github.io/BoarderBeats/terms.html
+       https://kkinnit-o8.github.io/BoarderBeats/privacy.html
+     (Replace [your email] in docs/privacy.html with a contact address first.)
+   - Platform: Desktop.
+
+3. ADD THE PRODUCTS  (in the app: Add products)
+   - Login Kit  -> platform Desktop -> Redirect URI:   http://127.0.0.1:8743/callback/
+     (exactly like that, with the slash at the end)
+   - Content Posting API -> switch ON "Direct Post".
+   - Scopes: user.info.basic, video.publish, video.upload
+
+4. SANDBOX  (lets you use the app without TikTok's review)
+   - Switch the app to Sandbox -> Create Sandbox -> Apply changes.
+   - Sandbox settings -> Target users -> add your own TikTok account, and accept when TikTok asks.
+
+5. YOUR KEYS
+   - Double-click "Start Border Beats.bat" once. It creates tiktok-keys.json in this folder.
+   - Open tiktok-keys.json in Notepad and paste the SANDBOX "Client key" and "Client secret"
+     from the developer portal between the quotes. Save.
+   - Keep this file private. Never send it to anyone (including in chats).
+
+6. LOG IN
+   - Start Border Beats with "Start Border Beats.bat" (keep its black window open). It opens
+     http://127.0.0.1:8743/ - always use Border Beats from that address when you want to post.
+   - Open "Post to TikTok" on the start screen -> Log in with TikTok -> allow.
+
+7. POSTING
+   - Render videos as usual. When they finish, the posting screen opens: check the caption,
+     choose who can see each video, press Post.
+   - "How videos go to TikTok" (in the Post to TikTok section):
+       * Posted to your profile: the caption goes with it.
+       * Sent to your TikTok inbox as drafts: you finish and post each one in the TikTok app
+         (the caption is copied for you to paste). Useful while your app isn't approved (below).
+
+
+IMPORTANT LIMITS (TikTok's rules, not this app's)
+- Until TikTok approves your app ("Direct Post audit"), posts can only be "Only me", and your
+  TikTok account must be set to Private while posting (TikTok app -> Settings and privacy ->
+  Privacy -> Private account). Afterwards set the account public again and change each video
+  to "Everyone". The inbox/drafts option avoids this: you post publicly from the app yourself
+  (if TikTok allows drafts for sandbox apps - try it).
+- Approval: in the developer portal you can submit the app for review and the Direct Post
+  audit. TikTok states that apps for private or personal use aren't approved, so expect a no.
+- About 15 posts per day per account; at most 5 drafts waiting in your inbox; videos must fit
+  your account's length limit (usually up to 10 minutes).
+- The login renews itself for a year; after that, log in again.
+
+If something goes wrong, the message on the posting screen says what TikTok answered.

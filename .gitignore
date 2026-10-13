@@ -1,0 +1,11 @@
+# Private: your TikTok app keys and login. Never put these on GitHub.
+tiktok-keys.json
+tiktok-login.json
+
+# Local tool and system clutter
+.claude/
+node_modules/
+*.tmp
+Thumbs.db
+desktop.ini
+.DS_Store
